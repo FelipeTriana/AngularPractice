@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Poema programatico</h1>
+    <h2>{{ welcome }}</h2>
+    <ul>
+        <li *ngFor="let task of tasks">
+            {{ task }}
+        </li>
+    </ul>
+    <hr/>
+    <h2>{{'Seriedad'.repeat(4)}}</h2> <!--Dentro del String interpolation se puede ejecutar codigo JavaScript o invocar variables definidas en el componente.ts-->
+    <p>Hola soy {{ name }} y mi edad es {{ age }}</p>
+    <hr/>
+    <!--Property Binding: Enlaza una variable a una propiedad de un elemento-->
+    <img [src]="person.avatar" alt="">
+    <input type="number" [value]="person.age">
+    <button [disabled]="isDisabled">Click me</button>
+    <p>Person: {{ person.name }}</p>
+    <hr/>
+    <!--Para eventos usamos parentesis-->
+    <button (click)="clickHandler()">Click me</button>
+    <button (dblclick)="clickHandler()">Double me</button>
+    <p>(change)</p>
+    <!--El evento (change) permite desencadenar un evento(funcion) cuando se identifican cambio en el input, $event significa que captura el evento del cambio del input-->
+    <input type="number" [value]="person.age" (change)="changeHandler($event)">
+    <p>keydown</p>
+    <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+</div>
