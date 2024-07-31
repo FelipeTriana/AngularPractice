@@ -8,7 +8,7 @@
     </ul>
     <hr/>
     <h2>{{'Seriedad'.repeat(4)}}</h2> <!--Dentro del String interpolation se puede ejecutar codigo JavaScript o invocar variables definidas en el componente.ts-->
-    <p>Hola soy {{ name }} y mi edad es {{ age }}</p>
+    <h1>Hola soy {{ name() }} y mi edad es {{ age }}</h1>
     <hr/>
     <!--Property Binding: Enlaza una variable a una propiedad de un elemento-->
     <img [src]="person.avatar" alt="">
@@ -19,9 +19,23 @@
     <!--Para eventos usamos parentesis-->
     <button (click)="clickHandler()">Click me</button>
     <button (dblclick)="clickHandler()">Double me</button>
-    <p>(change)</p>
+
     <!--El evento (change) permite desencadenar un evento(funcion) cuando se identifican cambio en el input, $event significa que captura el evento del cambio del input-->
+    <p>(change) Se oprime el input para cambiar de numero y se refleja el evento en consola</p>
     <input type="number" [value]="person.age" (change)="changeHandler($event)">
-    <p>keydown</p>
+    
+    <!--Estudiando el comportamiento de change con un type text-->
+    <p>(change) Hay que oprimir enter para que se vea el evento en consola</p>
+    <input type="text" [value]="person.name" (change)="changeHandler($event)">
+
+ 
+    <p>(keydown) Cuando se oprime una tecla se refleja el evento en consola</p>
     <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+
+    <p>(keydown) Cuando se oprime Shift + T</p>
+    <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
+    <hr/>
+    <p>Signals: Se puede ver el funcionamiento de Signals cuando al escribir aqui y dar enter cambia el nombre de la presentacion</p>
+    <input type="text" [value]="name()" (change)="changeHandler($event)">
+    <p>Reactividad: {{ name() }}</p>
 </div>

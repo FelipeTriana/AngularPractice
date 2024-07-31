@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -16,7 +16,7 @@ export class LabsComponent {   //Variables publicas por defecto, si se ponen pri
     'Crear componente',
     'Crear servicio',
   ];
-  name = 'Felipe';
+  name = signal('Felipe');
   age = '26';
   isDisabled = true;
   img = 'https://w3schools.com/howto/img_avatar.png';
@@ -33,7 +33,9 @@ export class LabsComponent {   //Variables publicas por defecto, si se ponen pri
 
   //Algunos eventos se pueden enviar como parametro
   changeHandler(event: Event){
-    console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
   }
 
   keydownHandler(event: KeyboardEvent){
